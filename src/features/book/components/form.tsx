@@ -5,7 +5,7 @@ interface FormProps {
   onSubmit: (data: Master.BookForm) => Promise<void>;
   categories: Master.CategoryItem[];
   submitCaption: string;
-  initialData?: Master.BookForm;
+  initialData?: Master.BookItem; 
 }
 
 export default function Form({
@@ -17,48 +17,22 @@ export default function Form({
   const { register, handleSubmit, reset, formState } =
     useForm<Master.BookForm>();
 
-  // ✅ preload data (for edit)
   useEffect(() => {
     if (initialData) {
-      reset(initialData);
+    
+      const { id, ...rest } = initialData;
+      reset(rest);
     }
   }, [initialData, reset]);
 
   return (
-    <form
-      onSubmit={handleSubmit(onSubmit)}
-      className="bg-white shadow-md rounded px-6 py-6 space-y-3"
-    >
-      <input
-        {...register('bookName')}
-        placeholder="Book Name"
-        className="w-full border p-2 rounded"
-      />
+    <form onSubmit={handleSubmit(onSubmit)} className="space-y-3">
+      <input {...register('bookName')} placeholder="Book Name" />
+      <input {...register('authorName')} placeholder="Author Name" />
+      <input {...register('publisherName')} placeholder="Publisher Name" />
+      <input {...register('bookPrice', { valueAsNumber: true })} type="number" />
 
-      <input
-        {...register('authorName')}
-        placeholder="Author Name"
-        className="w-full border p-2 rounded"
-      />
-
-      <input
-        {...register('publisherName')}
-        placeholder="Publisher Name"
-        className="w-full border p-2 rounded"
-      />
-
-      <input
-        {...register('bookPrice', { valueAsNumber: true })}
-        type="number"
-        placeholder="Price"
-        className="w-full border p-2 rounded"
-      />
-
-      {/* ✅ CATEGORY DROPDOWN */}
-      <select
-        {...register('categoryId', { valueAsNumber: true })}
-        className="w-full border p-2 rounded"
-      >
+      <select {...register('categoryId', { valueAsNumber: true })}>
         <option value={0}>Select Category</option>
         {categories.map((c) => (
           <option key={c.id} value={c.id}>
@@ -67,11 +41,7 @@ export default function Form({
         ))}
       </select>
 
-      <button
-        type="submit"
-        disabled={formState.isSubmitting}
-        className="w-full bg-blue-600 text-white py-2 rounded"
-      >
+      <button disabled={formState.isSubmitting}>
         {submitCaption}
       </button>
     </form>

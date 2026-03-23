@@ -74,8 +74,7 @@ const BookList = () => {
 
   return (
     <div className="min-h-screen p-6 relative overflow-hidden bg-gradient-to-br from-[#08203E] to-[#557C93]">
-      
-      {/* HEADER */}
+    
       <div className="flex justify-between items-center mb-6 relative z-10">
         <h1 className="text-3xl text-white font-semibold">📚 Library Books</h1>
 
@@ -98,7 +97,7 @@ const BookList = () => {
         </button>
       </div>
 
-      {/* TABLE */}
+      
       <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-2xl overflow-hidden relative z-10">
         <div className="overflow-x-auto">
           <table className="w-full text-white text-sm">
@@ -146,7 +145,7 @@ const BookList = () => {
         </div>
       </div>
 
-      {/* MODAL */}
+      
       {showForm && (
         <div className="fixed inset-0 flex items-center justify-center bg-black/50 z-50">
           <div className="bg-white rounded-2xl p-6 w-[400px] shadow-xl">
