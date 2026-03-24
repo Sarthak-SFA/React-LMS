@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ApiService } from '../../../services';
-import Form from '../components/form';
-import { useUpdateBookMutation, useCategoriesQuery } from '../query';
+import Form from '../components/Form';
+import { useUpdateBookMutation, useCategoriesQuery } from '../queries';
 
 export default function Edit() {
   const { id } = useParams<{ id: string }>();

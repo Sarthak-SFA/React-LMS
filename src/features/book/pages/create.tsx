@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
-import { useNewBookMutation, useCategoriesQuery } from '../query';
-import Form from '../components/form';
+import { useNewBookMutation, useCategoriesQuery } from '../queries';
+import Form from '../components/Form';
 
 const Create = () => {
   const { mutate, isPending } = useNewBookMutation();

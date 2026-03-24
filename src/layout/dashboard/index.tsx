@@ -58,7 +58,7 @@ const Dashboard = () => {
       {
         label: "Books Issued",
         data: issues.map(() => 1), 
-        backgroundColor: "rgba(255, 99, 132, 0.5)",
+        backgroundColor: "rgba(244, 245, 241, 0.93)",
       },
     ],
   };

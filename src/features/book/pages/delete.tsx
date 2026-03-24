@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { useDeleteBookMutation } from '../query';
+import { useDeleteBookMutation } from '../queries';
 
 export default function Delete() {
   const { id } = useParams<{ id: string }>();
